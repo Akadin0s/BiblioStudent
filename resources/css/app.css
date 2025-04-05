@@ -1,0 +1,23 @@
+/* Add drop shadow to cards */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black transparent background */
+    z-index: 1040; /* Ensure it appears below the side panel */
+}
