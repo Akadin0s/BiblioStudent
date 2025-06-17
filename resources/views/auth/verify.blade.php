@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['hideNav' => false])
 
 @section('content')
 <div class="container">

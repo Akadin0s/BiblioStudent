@@ -2,39 +2,52 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+    use App\Http\Controllers\Controller;
+    
+    use Illuminate\Support\Facades\Session;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Http\Request ;
+    use Illuminate\Validation\ValidationException;
+
+use function Pest\Laravel\put;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+    
+    public function show(){
+        return view('auth.login');
     }
+    
+    public function Login(Request $request){
+        
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',           
+        ]);
+
+
+        // Map the email field to the correct column in the database
+        $credentials = [
+            'email' => $validated['email'], 
+            'password' => $validated['password'],
+        ];
+
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->role === 'Student' || Auth::user()->role === 'Teacher') {
+                $request->session()->regenerate(); 
+                return redirect()->route('home');
+            } elseif (Auth::user()->role === 'Admin') {
+                $request->session()->regenerate(); 
+                return redirect()->route('dashboard');
+            }
+            
+        }
+           throw ValidationException::withMessages([
+                'password' => 'The provided credentials do not match our records.',
+            ]); 
+        
+        
+    }
+   
+
 }

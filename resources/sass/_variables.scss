@@ -1,16 +1,24 @@
 // Import Pacifico font
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+$enable-negative-margins: true;
 // Body
-$body-bg: #FEFBE9;
+$body-bg: #fdf6e3;
+
+body {
+  user-select: none; // Disable text selection
+  
+}
+
 
 // Typography
 $font-family-sans-serif: 'Pacifico', cursive; // Updated font
+$font-weight-base: 700;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 $primary: #DCAF92;
-$secondary: #805580;
+$secondary: #EFF0E5;
 $success: #4080C0;
+
 
 
