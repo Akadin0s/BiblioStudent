@@ -52,25 +52,19 @@
             <div class="side-pannel"
                 style="position: fixed; top: 0; right: 0; height: 100%; width: 600px; background-color: #D6E4E1; opacity: 0.95; z-index: 1050; overflow-y: auto; padding: 20px; display: none;">
                 <!-- Softer color -->
-                <h4 style="color: black; margin-bottom: 20px;">All Cours</h4> <!-- Softer white -->
-                <ul class="nav nav-tabs" style="margin-bottom: 20px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" style="color: black;" href="#">Programs</a> <!-- Softer white -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: black;" href="#">Levels</a> <!-- Softer white -->
-                    </li>
+                <h4 style="color: black; margin-bottom: 20px;">Toutes les matières</h4> <!-- Softer white -->
 
-                </ul>
                 <div class="row gx-3 gy-3">
                     @foreach ($languages as $language)
                         <div class="col-6">
-                            <div class="card" style="background-color: #E0E0E0; border: none;">
-                                <img src="{{ asset('storage/' . $language->image_path) }}" class="card-img-top">
-                                <div class="card-body text-center">
-                                    <p class="card-text" style="color: #495057;">{{ $language->name_language }}</p>
+                            <a href="{{ route('languagecard', ['id' => $language->id]) }}" class="text-decoration-none">
+                                <div class="card" style="background-color: #E0E0E0; border: none;">
+                                    <img src="{{ asset('storage/' . $language->image_path) }}" class="card-img-top">
+                                    <div class="card-body text-center">
+                                        <p class="card-text" style="color: #495057;">{{ $language->name_language }}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -91,7 +85,7 @@
                     </div>
                 </div>
                 <div class="row gx-4 gy-4 justify-content-center flex-wrap">
-                    @foreach ($languages as $language)
+                    @foreach ($languages->take(4) as $language)
                         <div class="col-auto zoom">
                             <a href="{{ route('languagecard', ['id' => $language->id]) }}" class="text-decoration-none">
                                 <div class="card rounded-4 " style="width: 18rem;">
@@ -107,7 +101,6 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
     </section>
 @endsection

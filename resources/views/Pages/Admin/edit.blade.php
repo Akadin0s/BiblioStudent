@@ -8,20 +8,20 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nom</label>
                     <input type="text" class="form-control border border-primary" id="name" name="name" value="{{ $user->name }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="lastname" class="form-label">Last Name</label>
+                    <label for="lastname" class="form-label">Prénom</label>
                     <input type="text" class="form-control border border-primary" id="lastname" name="lastname" value="{{ $user->lastname }}"
                         required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Adresse e-mail</label>
                     <input type="email" class="form-control borde border-primary" id="email" name="email" value="{{ $user->email }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password (Leave blank to keep current password)</label>
+                    <label for="password" class="form-label">Mot de passe (Laisser vide pour conserver le mot de passe actuel)</label>
                     <input type="password" class="form-control border border-primary" id="password" name="password">
                 </div>
                 <div class="d-flex align-items-center justify-content-center gap-3">
