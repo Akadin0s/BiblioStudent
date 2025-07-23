@@ -31,8 +31,3 @@ L’objectif principal est de promouvoir un environnement d’apprentissage coll
 - **MySQL** : Base de données relationnelle.
 - **Composer** : Gestionnaire de dépendances PHP.
 
-## Installation et déploiement
-
-1. Cloner le dépôt :  
-   ```bash
-   git clone <URL_DU_REPO>
